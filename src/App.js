@@ -1,5 +1,7 @@
 import React from 'react';
 import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
+import Header from './components/layout/Header'
 
 class App extends React.Component {
 
@@ -8,7 +10,7 @@ class App extends React.Component {
       {
         title: 'Take out the trash',
         id: 1,
-        isCompleted: false
+        isCompleted: true
       },
       {
         title: 'Learn Data Science',
@@ -22,11 +24,28 @@ class App extends React.Component {
       }
     ]
   }
+
+// Toggle isCompleted
+  markComplete = (id) => {
+    this.setState({ todos: this.state.todos.map(todo => {
+      if(todo.id === id) {
+        todo.isCompleted = !todo.isCompleted
+      }
+      return todo;
+    }) })
+  }
+
+// Delete a todo
+  delTodo = (id) => {
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]})
+  }
+
   render() {
     console.log(this.state.todos)
     return (
     <div className="App">
-      <Todos todos={this.state.todos}/>
+      <Header />
+      <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
     </div>
   );
  }
