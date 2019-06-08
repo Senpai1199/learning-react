@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class AddTodo extends React.Component {
 state = {
@@ -35,4 +36,7 @@ onSubmit = (e) => {
   }
 }
 
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired
+}
 export default AddTodo;
