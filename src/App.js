@@ -2,6 +2,7 @@ import React from 'react';
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
 import Header from './components/layout/Header'
+import uuid from 'uuid'
 
 class App extends React.Component {
 
@@ -9,17 +10,17 @@ class App extends React.Component {
     todos: [
       {
         title: 'Take out the trash',
-        id: 1,
+        id: uuid.v4(),
         isCompleted: true
       },
       {
         title: 'Learn Data Science',
-        id: 2,
+        id: uuid.v4(),
         isCompleted: false
       },
       {
         title: 'Complete BOSM backend',
-        id: 3,
+        id: uuid.v4(),
         isCompleted: false
       }
     ]
@@ -43,7 +44,7 @@ class App extends React.Component {
 //Add todo
 addTodo = (title) => {
   const newTodo = {
-    id: 4,
+    id: uuid.v4(),
     title: title,
     isCompleted: false,
   }
